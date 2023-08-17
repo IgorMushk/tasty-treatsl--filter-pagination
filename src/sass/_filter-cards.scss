@@ -1,0 +1,27 @@
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  //   max-width: 335px;
+}
+
+.wrap-form-item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.input-search {
+  width: 322px;
+}
+
+.time-selector {
+  width: 160px;
+}
+
+.area-selector {
+  width: 160px;
+}
+
+.ingredients-selector {
+  width: 188px;
+}
