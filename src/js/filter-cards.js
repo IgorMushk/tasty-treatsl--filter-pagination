@@ -43,6 +43,7 @@ Notify.init({
   position: 'center-center',
 });
 
+let pageNumb = 1;
 let totalPages = 0;
 
 const testyApiService = new TastyApiService();
