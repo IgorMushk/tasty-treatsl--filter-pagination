@@ -19,7 +19,7 @@ const loaderIndicatorRef = document.querySelector('.loader');
 const btnPaginationBarRef = document.querySelector('.pagination-bar');
 const formFilters = document.querySelector('.filter-form');
 
-//  - Pagination -
+//  - Pagination - to  pagination.js
 const backToFirstPage = document.querySelector('#pag-btn-start');
 const pageOneBtn = document.querySelector('#pag-btn-1');
 const pageTwoBtn = document.querySelector('#pag-btn-2');
@@ -71,6 +71,7 @@ function onForm(evt) {
 }
 
 function onSeachQueryTitle(evt) {
+  resetNumBtn();
   //evt.preventDefault();
   //console.log('inputTitle:', evt.target.value);
   const inputQuery = evt.target.value.trim();
@@ -121,6 +122,7 @@ function resetFilter() {
   seachQueryTimeRef.value = '';
   seachQueryAreasRef.value = '';
   selectQueryIngredientsRef.value = '';
+  resetNumBtn();
 }
 
 function clearRecipesContainer() {
@@ -213,6 +215,7 @@ function backToFirst() {
 }
 
 function loadLastPage() {
+  if (totalPages <= 3) return;
   // pageNumb ->> totalPages
   // if (window.innerWidth < 768) {
   //   pageNumb = 48;
@@ -248,6 +251,7 @@ function loadNextPage() {
   // if (testyApiService.currentPage === 32) {
   //   return;
   // }
+  if (totalPages <= 3) return;
   buttonNumered.forEach(button => {
     button.textContent++;
     // pageNumb=button.textContent
@@ -303,7 +307,7 @@ function changeButtonColor() {
   buttonNumered.forEach(button => {
     const pageNumb = parseInt(button.textContent);
     //console.log(pageNumb);
-    console.log('btn:', pageNumb, 'currentPage', testyApiService.currentPage);
+    //console.log('btn:', pageNumb, 'currentPage', testyApiService.currentPage);
     if (testyApiService.currentPage === pageNumb) {
       button.classList.add('pag-btn-on-hover');
     } else {
@@ -335,6 +339,16 @@ function changeButtonColor() {
   if (totalPages <= 1) {
     pageTwoBtn.classList.add('btn_hidden');
   }
+}
+
+function resetNumBtn() {
+  pageOneBtn.textContent = 1;
+  pageTwoBtn.textContent = 2;
+  pageThreeBtn.textContent = 3;
+  pageOneBtn.classList.remove('btn_hidden');
+  pageTwoBtn.classList.remove('btn_hidden');
+  pageThreeBtn.classList.remove('btn_hidden');
+  btnWithDotsRight.classList.remove('btn_hidden');
 }
 
 /////////////////////////////////////////////////////////////////////////////////
